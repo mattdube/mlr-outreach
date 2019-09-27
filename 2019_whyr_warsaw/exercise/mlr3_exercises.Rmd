@@ -43,7 +43,12 @@ titanic_nona_pred = titanic_pred[, !(colnames(titanic_pred) %in% na_cols), with 
 ```{r}
 # if mlr3 is not installed, run the following line:
 # remotes::install_github("mlr-org/mlr3verse")
-library(mlr3verse) # loads all packages mlr3, mlr3tuning, mlr3learners, mlr3pipelines, mlr3viz etc.
+#library(mlr3verse) # loads all packages mlr3, mlr3tuning, mlr3learners, mlr3pipelines, mlr3viz etc.
+library(mlr3)
+library(mlr3tuning)
+library(mlr3learners)
+library(mlr3pipelines)
+library(mlr3viz)
 
 # Build Titanic Task
 titanic_tsk = TaskClassif$new(id = "titanic", backend = titanic, target = "Survived")
@@ -186,6 +191,7 @@ This will enable us evaluate the tuning approach in a nested cross-validation.
 
 ```{r}
 library(mlr3tuning)
+library(paradox)
 
 # define learner
 lrn_rpart = lrn("classif.rpart")
